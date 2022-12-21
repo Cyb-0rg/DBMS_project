@@ -15,7 +15,9 @@ goto server-react/bin/db.js then edit with yours
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'employeeSystem'
+        database: 'employeeSystem',
+        debug: false,
+        connectionLimit: 100,
     });
     
 </pre>
