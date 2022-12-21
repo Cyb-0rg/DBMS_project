@@ -52,8 +52,29 @@
   border-color: black;
   padding-top: 1%;
 
-  min-height: 50vh;
+  min-height: fit-content;
+  margin-bottom: 25px;
 }
+
+.analysisLinks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  padding-bottom: 2%;
+  border-color: black;
+  padding-top: 1%;
+
+  border-color: #222;
+  border-width: 1px;
+  border-style: solid;
+
+  min-height: fit-content;
+  margin-bottom: 25px;
+}
+
 
 input {
   width: 300px;
@@ -85,12 +106,18 @@ input {
   color: rgb(232, 74, 74);
 }
 
+.analysisLinks a{
+  text-decoration: none;
+  margin-top: 15px;
+  color: rgb(20, 20, 20);
+  font-size: large;
+}
+
 .information a:hover{
   margin-top: 15px;
   color: rgb(126, 69, 232);
   text-decoration: solid;
 }
-
 
 .employees {
   display: flex;
@@ -108,7 +135,6 @@ input {
 }
 
 .employees button{
-
   width: 70px;
   font-size: 16px;
   padding-left: 30px;

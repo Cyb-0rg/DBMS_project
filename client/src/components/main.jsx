@@ -35,6 +35,8 @@ function Main() {
   const [showEmployees, setshowEmployees] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [isLoggedIn, setIsLoggedin] = useState(false);
+  const [openAnalysis, setOpenAnalysis] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingLogin, setIsLoadingLogin] = useState(true);
 
@@ -155,6 +157,7 @@ function Main() {
 
   const getEmployees = () => {
 
+    setShowForm(false)
     setTimeout (() => {
       setIsLoading(false);
       !showEmployees && messageToast();
@@ -329,10 +332,19 @@ showForm ?
 !isLoadingLogin?
 
 <div className="information">
-  
-  <button onClick={()=>{setShowForm(!showForm)}}> { !showForm ? "Add Employee" : "Close Form"}</button>
+
+{
+   !openAnalysis ?
+   <>
+  <button onClick={()=>{setShowForm(!showForm); setshowEmployees(false)}}> { !showForm ? "Add Employee" : "Close Form"}</button>
   <button onClick={getEmployees}> { !showEmployees ? "Show Employees" : "Close Employees"}</button>
   <button onClick={logout}> { "Logout"}</button>
+  </> 
+  :
+  ""  
+}
+  
+  <button onClick={()=>{setOpenAnalysis(!openAnalysis); setshowEmployees(false)}}> {!openAnalysis ? "See analysis" : "close analysis"}</button>
 
 
 </div>  
@@ -341,6 +353,7 @@ showForm ?
 
 <PulseLoader
   color="#000"
+  cssOverride={{paddingTop:50}}
   loading
   size={14}
   speedMultiplier={1}
@@ -400,9 +413,8 @@ showForm ?
 
 
     <div className="employees">
-
     {employeeList.map((val, key) => {
-      return (
+      return (   
         <div className="employee">
             <div>
               <h3> Name: {val.name} </h3>
@@ -449,6 +461,7 @@ showForm ?
 
     <PulseLoader
     color="#000000"
+    cssOverride={{paddingTop:60}}
     loading
     size={13}
     speedMultiplier={1}
@@ -463,6 +476,28 @@ showForm ?
 //
 ""
 
+}
+
+{
+  isLoggedIn ?
+
+  openAnalysis ?
+
+  <div className="analysisLinks"> 
+        <a href="http://localhost:5001/min/age" target="blank"> Go to Min Age </a>
+        <a href="http://localhost:5001/max/age" target="blank"> Go to Max Age </a>
+        <a href="http://localhost:5001/avg/age" target="blank"> Go to Average Age </a>
+        <a href="http://localhost:5001/count/diversity" target="blank"> Go to Employees Count </a>
+        <a href="http://localhost:5001/join" target="blank"> Go to Join Tables </a>
+  </div>
+  
+
+  :
+
+  ""
+  :
+
+  ""
 }
     </div> 
   );
