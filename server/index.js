@@ -47,18 +47,6 @@ app.get("/employees", (req, res) => {
   
 });
 
-app.get("/employees", (req, res) => {
-  db.query("SELECT * FROM employees", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-  
-});
-
-
 app.get("/checkpassword", (req, res) => {
   db.query("SELECT * FROM justchecktemp", (err, result) => {
     if (err) {
